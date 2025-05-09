@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import { Search, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
@@ -39,42 +39,50 @@ const center = {
   lng: 4.3517
 };
 
-const markerIcons = {
-  "Shopping Center": {
-    url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png",
-    scaledSize: { width: 32, height: 32 }
-  },
-  "Airport": {
-    url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png",
-    scaledSize: { width: 32, height: 32 }
-  },
-  "University": {
-    url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png",
-    scaledSize: { width: 32, height: 32 }
-  }
-};
-
 export default function LocationsPage() {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ""
   });
 
-  const [map, setMap] = useState(null);
+  const [map, setMap] = useState<google.maps.Map | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const onLoad = useCallback(function callback(map: any) {
+  const onLoad = useCallback((map: google.maps.Map) => {
     setMap(map);
   }, []);
 
-  const onUnmount = useCallback(function callback() {
+  const onUnmount = useCallback(() => {
     setMap(null);
   }, []);
 
-  const filteredLocations = locations.filter(location =>
-    location.address.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    location.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredLocations = useMemo(() => {
+    return locations.filter(location =>
+      location.address.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      location.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }, [searchQuery]);
+
+  // Only define markerIcons after the map has loaded and google.maps is available
+  const markerIcons = useMemo(() => {
+    if (!isLoaded || typeof google === "undefined") return {};
+
+    const size = new google.maps.Size(32, 32);
+    return {
+      "Shopping Center": {
+        url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+        scaledSize: size
+      },
+      "Airport": {
+        url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+        scaledSize: size
+      },
+      "University": {
+        url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+        scaledSize: size
+      }
+    };
+  }, [isLoaded]);
 
   return (
     <div className="min-h-screen pt-20">
@@ -85,7 +93,7 @@ export default function LocationsPage() {
           className="max-w-4xl mx-auto"
         >
           <h1 className="text-4xl font-bold mb-8">Find a Massage Chair</h1>
-          
+
           <div className="relative mb-8">
             <input
               type="text"
@@ -111,7 +119,7 @@ export default function LocationsPage() {
                     key={location.id}
                     position={location.location}
                     title={location.name}
-                    icon={markerIcons[location.type]}
+                    icon={markerIcons[location.type as keyof typeof markerIcons]}
                   />
                 ))}
               </GoogleMap>
