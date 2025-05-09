@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background: 0 0% 100%; /* white */
+  --foreground: 222.2 47.4% 11.2%; /* almost black */
+  --border: 214.3 31.8% 91.4%; /* light gray */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -74,10 +74,13 @@
 
 @layer base {
   * {
-    @apply border-border;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--border);
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--background);
+    color: var(--foreground);
   }
 }
 
