@@ -1,11 +1,21 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import { Search, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 
-const locations = [
+type LocationType = "Shopping Center" | "Airport" | "University";
+
+interface Location {
+  id: number;
+  name: string;
+  type: LocationType;
+  address: string;
+  location: { lat: number; lng: number };
+}
+
+const locations: Location[] = [
   {
     id: 1,
     name: "Shopping Center South",
@@ -39,31 +49,25 @@ const center = {
   lng: 4.3517
 };
 
-const markerIcons = {
-  "Shopping Center": {
-    url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png",
-    scaledSize: { width: 32, height: 32 }
-  },
-  "Airport": {
-    url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png",
-    scaledSize: { width: 32, height: 32 }
-  },
-  "University": {
-    url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png",
-    scaledSize: { width: 32, height: 32 }
-  }
-};
-
 export default function LocationsPage() {
+  const [isMounted, setIsMounted] = useState(false);
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ""
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
+    libraries: ['places']
   });
 
-  const [map, setMap] = useState(null);
+  const [map, setMap] = useState<google.maps.Map | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const onLoad = useCallback(function callback(map: any) {
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  const onLoad = useCallback(function callback(map: google.maps.Map) {
+    const bounds = new window.google.maps.LatLngBounds();
+    locations.forEach(({ location }) => bounds.extend(location));
+    map.fitBounds(bounds);
     setMap(map);
   }, []);
 
@@ -75,6 +79,14 @@ export default function LocationsPage() {
     location.address.toLowerCase().includes(searchQuery.toLowerCase()) ||
     location.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  if (!isMounted) {
+    return (
+      <div className="min-h-screen pt-20 flex items-center justify-center">
+        Loading...
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen pt-20">
@@ -89,7 +101,7 @@ export default function LocationsPage() {
           <div className="relative mb-8">
             <input
               type="text"
-              placeholder="Search by city"
+              placeholder="Search by city or location"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full p-4 pr-12 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -102,16 +114,21 @@ export default function LocationsPage() {
               <GoogleMap
                 mapContainerStyle={mapContainerStyle}
                 center={center}
-                zoom={8}
+                zoom={10}
                 onLoad={onLoad}
                 onUnmount={onUnmount}
+                options={{
+                  streetViewControl: false,
+                  mapTypeControl: false,
+                  fullscreenControl: false,
+                }}
               >
                 {filteredLocations.map((location) => (
                   <Marker
                     key={location.id}
                     position={location.location}
                     title={location.name}
-                    icon={markerIcons[location.type]}
+                    // Removed the icon property to use default red pin
                   />
                 ))}
               </GoogleMap>
@@ -128,7 +145,13 @@ export default function LocationsPage() {
                 key={location.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-white rounded-lg shadow-md p-6"
+                className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow cursor-pointer"
+                onClick={() => {
+                  if (map) {
+                    map.panTo(location.location);
+                    map.setZoom(15);
+                  }
+                }}
               >
                 <div className="flex flex-col items-center text-center">
                   <MapPin className="w-12 h-12 text-blue-500 mb-4" />
