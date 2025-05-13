@@ -63,7 +63,8 @@ export default function B2BPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <h2 className="text-3xl font-bold mb-12">
+            <div className="mb12 flex-1">
+            <h2 className="text-3xl font-bold mb-12 text-center">
               Flexibele<br />verdienmodellen
             </h2>
 
@@ -81,7 +82,7 @@ export default function B2BPage() {
                 <h3 className="text-xl font-semibold">Nieuwe inkomstenstroom</h3>
               </div>
             </div>
-
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div>
                 <h3 className="text-2xl font-bold mb-4">Flexisbele verzeinmodel</h3>
