@@ -37,9 +37,9 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.4 }}
           >
             <img 
-              src="https://images.pexels.com/photos/7479883/pexels-photo-7479883.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+              src="https://www.littlenap.in/data/product/ROBOCURA/dream+/Lifestyle.jpg" 
               alt="Premium Massage Chair" 
-              className="mx-auto max-w-full rounded-lg shadow-xl w-full max-w-lg"
+              className="mx-auto w-full max-w-2xl rounded-lg shadow-xl"
             />
           </motion.div>
         </div>

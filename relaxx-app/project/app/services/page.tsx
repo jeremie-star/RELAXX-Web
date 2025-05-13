@@ -13,7 +13,7 @@ export default function ServicesPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-sky-200 pt-24 pb-16 px-4">
+      <section style={{ backgroundColor: '#99D3FF' }} className="bg-sky-200 pt-24 pb-16 px-4">
         <div className="container mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -27,9 +27,9 @@ export default function ServicesPage() {
             </div>
             <div className="w-full md:w-1/2">
               <img
-                src="https://images.pexels.com/photos/6588581/pexels-photo-6588581.jpeg"
+                src="/images/service_image_1.png" 
                 alt="Massage Chair"
-                className="rounded-lg shadow-xl w-full"
+                className="w-full"
               />
             </div>
           </motion.div>
@@ -58,18 +58,12 @@ export default function ServicesPage() {
               </div>
             </div>
             <div className="flex justify-center">
-              <div className="w-full max-w-md">
-                <svg
-                  viewBox="0 0 200 300"
-                  className="w-full h-auto"
-                  stroke="currentColor"
-                  fill="none"
-                  strokeWidth="2"
-                >
-                  <path d="M70,50 Q100,30 130,50 Q160,70 160,100 L160,200 Q160,230 130,250 Q100,270 70,250 Q40,230 40,200 L40,100 Q40,70 70,50" />
-                  <line x1="100" y1="70" x2="100" y2="230" strokeDasharray="5,5" stroke="red" />
-                  <circle cx="120" cy="100" r="15" />
-                </svg>
+              <div className="w-full max-w-md ml-6">
+              <img
+                src="/images/section_service.png" 
+                alt="Massage Chair"
+                className="w-full"
+              />
               </div>
             </div>
           </motion.div>
@@ -82,9 +76,10 @@ export default function ServicesPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
+            className="flex flex-col items-center text-center"
           >
             <h2 className="text-3xl font-bold mb-8">Rates & Session Duration</h2>
-            <div className="grid grid-cols-3 gap-8 max-w-2xl mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mb-8 w-full">
               <div className="bg-white rounded-lg p-6 text-center shadow-md">
                 <div className="text-2xl font-bold mb-2">4 min</div>
                 <div className="text-xl">€1,50</div>
@@ -111,9 +106,10 @@ export default function ServicesPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
+            className="text-center" 
           >
             <h2 className="text-3xl font-bold mb-8">Frequently Asked Questions</h2>
-            <div className="max-w-2xl">
+            <div className="max-w-2xl mx-auto">
               <Accordion type="single" collapsible className="space-y-4">
                 <AccordionItem value="item-1" className="border rounded-lg p-2">
                   <AccordionTrigger className="flex gap-2 hover:no-underline">
