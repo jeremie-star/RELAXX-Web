@@ -26,13 +26,17 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-300",
+        "fixed top-0 left-0 right-0 z-50 py-2 transition-all duration-300",
         isScrolled ? "bg-sky-200/95 backdrop-blur-sm shadow-sm" : "bg-transparent"
       )}
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
         <Link href="/" className="text-2xl font-bold tracking-wider text-black">
-          RELAXX
+        <img 
+              src="/images/logo.png" 
+              alt="Logo Relaxx" 
+              className="w-[124px] h-auto"
+            />
         </Link>
 
         {/* Desktop menu */}

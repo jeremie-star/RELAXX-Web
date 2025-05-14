@@ -15,22 +15,22 @@ export default function B2BPage() {
             animate={{ opacity: 1, y: 0 }}
             className="flex flex-col md:flex-row items-center justify-between gap-12"
           >
-            <div className="max-w-xl">
+            <div className="max-w-xl mg-4">
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 Onze Missie
               </h1>
               <p className="text-xl mb-6">
-                Een stressvrije ervaring creëren waar gemak, confort en kwaliteit centraal staan.
+               Een stressvrije ervaring creëren waar gemark, confort en kwaliteit centraal staan.
               </p>
               <p className="text-xl">
                 Snel, toegankelijk en duurzaam—dat is onze belofte.
               </p>
             </div>
-            <div className="w-full md:w-1/2">
+            <div className="w-full h-full">
               <img
-                src="https://images.pexels.com/photos/7479883/pexels-photo-7479883.jpeg"
+                src="/images/B2B.jpeg"
                 alt="Massage Chair Experience"
-                className="rounded-lg w-full"
+                className="w-full h-full pl-[12px] mr-[12px]"
               />
             </div>
           </motion.div>
@@ -49,7 +49,7 @@ export default function B2BPage() {
               De nieuwe standaard<br />in on-demand wellness
             </h2>
             <p className="text-xl">
-              Of je nu nan het winkelen bent, onderwegg naaroe vonisse locaties<br />
+              Oi je nu nan het winkelen bent, onderwegg naaroe vonisse locaties<br />
               als stratregisch locaties zis winkelcentra, luchthaven en stations.
             </p>
           </motion.div>
