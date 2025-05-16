@@ -78,12 +78,12 @@ export function Navbar() {
         <nav className="md:hidden bg-sky-100/95 px-4 py-3 shadow-md">
           <ul className="flex flex-col space-y-3">
             <li><Link href="/" onClick={closeMenu} className="text-black hover:text-black/70">Home</Link></li>
-            <li><Link href="#about" onClick={closeMenu} className="text-black hover:text-black/70">About</Link></li>
-            <li><Link href="/services" onClick={closeMenu} className="text-black hover:text-black/70">Services</Link></li>
+            <li><Link href="#about" onClick={closeMenu} className="text-black hover:text-black/70">Over de Stoel</Link></li>
+            <li><Link href="/services" onClick={closeMenu} className="text-black hover:text-black/70">Ontspan met RelaxX </Link></li>
             <li><Link href="/locations" onClick={closeMenu} className="text-black hover:text-black/70">Locations</Link></li>
             <li><Link href="/testimonials" onClick={closeMenu} className="text-black hover:text-black/70">Testimonials</Link></li>
             <li><Link href="/b2b" onClick={closeMenu} className="text-black hover:text-black/70">B2B</Link></li>
-            <li><Link href="/WaitingList" onClick={closeMenu} className="text-black hover:text-black/70">WaitingList</Link></li>
+            <li><Link href="/WaitingList" onClick={closeMenu} className="text-black hover:text-black/70">Wachtlijst – Schrijf je nu in</Link></li>
           </ul>
         </nav>
       )}

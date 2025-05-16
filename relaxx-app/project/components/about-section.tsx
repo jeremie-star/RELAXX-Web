@@ -1,8 +1,8 @@
 "use client";
 
-import { Clock, Euro, Home } from "lucide-react";
+import { Clock, Euro } from "lucide-react";
 import { motion } from "framer-motion";
-import { WaveDivider } from "./wave-divider";
+// import { WaveDivider } from "./wave-divider";
 
 export function AboutSection() {
   const benefits = [
@@ -15,11 +15,6 @@ export function AboutSection() {
       icon: <Euro className="w-8 h-8" />,
       title: "Affordable",
       description: "Starting at €1,50 per session",
-    },
-    {
-      icon: <Home className="w-8 h-8" />,
-      title: "Hygienic & Maintained",
-      description: "Cleaned daily, always ready",
     },
   ];
 
