@@ -76,7 +76,7 @@ export function Navbar() {
       {/* Mobile menu dropdown */}
       {isMenuOpen && (
         <nav className="md:hidden bg-sky-100/95 px-4 py-3 shadow-md">
-          <ul className="flex flex-col space-y-3">
+        <ul className="flex flex-col items-center text-center space-y-3">
             <li><Link href="/" onClick={closeMenu} className="text-black hover:text-black/70">Home</Link></li>
             <li><Link href="#about" onClick={closeMenu} className="text-black hover:text-black/70">Over de Stoel</Link></li>
             <li><Link href="/services" onClick={closeMenu} className="text-black hover:text-black/70">Ontspan met RelaxX </Link></li>
