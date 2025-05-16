@@ -82,7 +82,7 @@ export function Navbar() {
             <li><Link href="/services" onClick={closeMenu} className="text-black hover:text-black/70">Ontspan met RelaxX </Link></li>
             <li><Link href="/locations" onClick={closeMenu} className="text-black hover:text-black/70">Locations</Link></li>
             <li><Link href="/testimonials" onClick={closeMenu} className="text-black hover:text-black/70">Testimonials</Link></li>
-            <li><Link href="/b2b" onClick={closeMenu} className="text-black hover:text-black/70">B2B</Link></li>
+            <li><Link href="/b2b" onClick={closeMenu} className="text-black hover:text-black/70">Zakelijk</Link></li>
             <li><Link href="/WaitingList" onClick={closeMenu} className="bg-green-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-green-700 transition-colors duration-200">Wachtlijst – Schrijf je nu in</Link></li>
           </ul>
         </nav>
