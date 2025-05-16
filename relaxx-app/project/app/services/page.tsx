@@ -27,7 +27,7 @@ export default function ServicesPage() {
             </div>
             <div className="w-full md:w-1/2">
               <img
-                src="/images/service_image_1.png" 
+                src="/images/service.png" 
                 alt="Massage Chair"
                 className="w-full"
               />
@@ -56,7 +56,7 @@ export default function ServicesPage() {
             <div className="flex justify-center">
               <div className="w-full max-w-md ml-6">
               <img
-                src="/images/section_service.png" 
+                src="/images/service2.png" 
                 alt="Massage Chair"
                 className="w-full"
               />

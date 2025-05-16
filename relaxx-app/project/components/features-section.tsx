@@ -1,6 +1,6 @@
 "use client";
 
-import { Clock, Euro, Plane } from "lucide-react";
+import { Clock, Euro, Plane, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 
 export function FeaturesSection() {
@@ -14,6 +14,11 @@ export function FeaturesSection() {
       icon: <Euro className="w-10 h-10 md:w-14 md:h-14" />,
       title: "Affordable",
       description: "Starting at €1,50 per session",
+    },
+    {
+      icon: <Sparkles className="w-10 h-10 md:w-14 md:h-14" />,
+      title: "Hygienic & Maintained",
+      description: "Cleaned daily, always ready",
     },
     {
       icon: <Plane className="w-10 h-10 md:w-14 md:h-14" />,
@@ -47,7 +52,7 @@ export function FeaturesSection() {
     <section className="relative bg-cream-100 py-20">
       <div className="container mx-auto px-4">
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-4 gap-10 max-w-5xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"

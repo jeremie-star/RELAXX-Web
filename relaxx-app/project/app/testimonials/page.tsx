@@ -28,31 +28,29 @@ export default function TestimonialsPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-sky-200 text-black pt-24 pb-16 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex flex-col md:flex-row items-center justify-between gap-2 "
-          >
-            <div className="max-w-xl mg-4">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              "Een perfect moment<br />
-              om op te laden tijdens<br />
-              het shoppen!"
-            </h1>
-            <p className="text-xl">Sophie, 34 aar, Antwerp</p>
-            </div>
-            <div className="w-full h-full">
-              <img
-                src="/images/testimone.png"
-                alt="Massage Chair Experience"
-                className="w-full "
-              />
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <section
+  className="relative w-full h-screen bg-cover bg-center text-black bg-sky-200 "
+  style={{
+    backgroundImage: "url('/images/test.png')", // Make sure this is the image path
+  }}
+>
+  <div className="absolute inset-0 "></div> {/* Overlay for contrast */}
+  
+  <div className="relative z-10 flex items-center  h-full px-4 pl-12">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="text-left max-w-xl"
+    >
+      <h1 className="text-3xl md:text-5xl font-bold leading-snug mb-6">
+        "Een perfect moment<br />
+        om op te laden tijdens<br />
+        het shoppen!"
+      </h1>
+      <p className="text-xl font-light">Sophie, 34 aar, Antwerpen</p>
+    </motion.div>
+  </div>
+</section>
 
       {/* Testimonials Section */}
       <section className="py-16 bg-white">
